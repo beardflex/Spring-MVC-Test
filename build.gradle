@@ -1,0 +1,48 @@
+// David Roche - 21/02/2017
+// Spring MVC Test Project.
+
+apply plugin: 'java'
+apply plugin: 'war'
+//apply plugin: 'eclipse'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'jetty'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+version = 1.0
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.springframework:spring-core:4.3.1.RELEASE'
+    compile 'org.springframework:spring-web:4.3.1.RELEASE'
+    compile 'org.springframework:spring-webmvc:4.3.1.RELEASE'
+    compile 'javax.servlet:javax.servlet-api:3.1.0'
+    compile 'javax.servlet:jstl:1.2'
+    compile 'org.slf4j:slf4j-api:1.7.21'
+    
+    testCompile 'junit:junit:4.12'
+}
+
+
+jettyRun {
+    contextPath = "spring-mvc"
+    httpPort = 8080
+}
+
+jettyRunWar {
+    contextPath = "spring-mvc"
+    httpPort = 8080
+}
+
+eclipse {
+  wtp {
+    component {
+      contextPath = 'spring-mvc'
+    }
+  }
+}
