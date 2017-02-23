@@ -19,16 +19,17 @@
 		</nav>
 		<div class="jumbotron">
 			<div class="container">
+				<h1>Login</h1>
 				<div class="row">
 					<div class="col-md-4 col-md-offset-4">
 						<form name="loginForm" action="<c:url value='/login' />" method="POST">
 							<div class="form-group">
-								<label for="userName">Username</label>
-								<input type="text" class="form-control" id="userName" placeholder="Enter your username.">
+								<label for="username">Username</label>
+								<input type="text" class="form-control" name="username" id="username" placeholder="Enter your username.">
 							</div>
 							<div class="form-group">
 								<label for="password">Password</label>
-								<input type="password" class="form-control" id="password" placeholder="Password">
+								<input type="password" class="form-control" name="password" id="password" placeholder="Password">
 							</div>
 							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 							<div class="form-actions">
@@ -45,8 +46,8 @@
 			</div>
 		</div>
 		
-		<spring:url value="/resources/core/css/hello.js" var="coreJs" />
-		<spring:url value="/resources/core/css/bootstrap.min.js" var="bootstrapJs" />
+		<spring:url value="/resources/core/js/hello.js" var="coreJs" />
+		<spring:url value="/resources/core/js/bootstrap.min.js" var="bootstrapJs" />
 		
 		<script src="${coreJs}"></script>
 		<script src="${bootstrapJs}"></script>

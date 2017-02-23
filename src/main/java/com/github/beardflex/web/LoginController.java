@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginController {
     
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/loginPage", method = RequestMethod.GET)
     public ModelAndView login(
               @RequestParam(value = "error", required = false) String error,
               @RequestParam(value = "logout", required = false) String logout) {
@@ -22,9 +22,27 @@ public class LoginController {
             model.addObject("message", "You have been logged out successfully.");
         }
         
-        model.setViewName("login");
+        model.setViewName("loginPage");
         
         return model;
     }
+    
+    @RequestMapping(value = "processLogin", method = RequestMethod.POST)
+    public ModelAndView processLogin(
+              @RequestParam(value = "username", required = true) String username,
+              @RequestParam(value = "password", required = true) String password) {
+        
+        ModelAndView model = new ModelAndView();
+        
+        if(username.equals("droche") && password.equals("Password!")) {
+            model.setViewName("index");
+        } else {
+            model.setViewName("loginPage");
+            model.addObject("error", "Invalid username or password.");
+        }
+        
+        return model;
+    }
+    
     
 }
